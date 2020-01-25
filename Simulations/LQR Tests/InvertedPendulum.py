@@ -3,12 +3,10 @@
 # Reference: https://www.academia.edu/4468049/Controlling_an_Inverted_pendulum_using_state_space_modeling_method_step_by_step_design_guide_for_control_students_
 
 import numpy as np
-import slycot
 import control as c
-import control.matlab as matlab
 import matplotlib.pyplot as plt
 import math
-import cmath
+
 # Constants for:
 # cart mass,
 # pendulum mass,
@@ -16,7 +14,6 @@ import cmath
 # length to CoM of pendulum,
 # moment of inertia of pendulum
 # gravity
-from numpy.core._multiarray_umath import ndarray
 
 M = 0.5
 m = 0.5
