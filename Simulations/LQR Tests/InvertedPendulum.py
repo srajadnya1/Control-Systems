@@ -55,9 +55,9 @@ C = np.array([[0, 0, 1, 0],
 D = np.array([[0],
               [0]])
 
-Q = np.matrix([[1, 0, 0, 0], # Weight angular displacement
-               [0, 1, 0, 0], # Weight angular velocity
-               [0, 0, 1, 0], # Weight linear displacement
+Q = np.matrix([[100, 0, 0, 0], # Weight angular displacement
+               [0, 100, 0, 0], # Weight angular velocity
+               [0, 0, 50, 0], # Weight linear displacement
                [0, 0, 0, 1]]) # Weight linear velocity
 
 R = 100 # Weight input force
@@ -66,7 +66,7 @@ K1, S, E = c.lqr(A, B, Q, R)
 
 sys = c.ss(A, B, C, D)
 
-x0 = np.array([[-1 * math.pi / 4],
+x0 = np.array([[1 * math.pi / 6],
                [0],
                [0],
                [0]])
@@ -74,15 +74,17 @@ x0 = np.array([[-1 * math.pi / 4],
 # K2 = c.place(A, B, P)
 
 Acl = np.array(A - B * K1)
-syscl = c.ss(Acl, B, C , D)
+syscl = c.ss(Acl, B, C, D)
+sysclD = c.sample_system(syscl, Ts= 0.001)
 
 step = c.step_response(syscl, X0=x0)
+stepD = c.step_response(sysclD, X0=x0)
 
 
 #
 
 plt.figure(1)
-yout, T = step
+yout, T = stepD
 plt.plot(yout.T, T.T)
 plt.xlabel("Time (Seconds)")
 plt.ylabel("Amplitude")
