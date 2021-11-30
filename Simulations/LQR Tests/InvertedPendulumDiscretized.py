@@ -1,5 +1,3 @@
-# NOTE: I tried to create the equations of motion for this system using Lagrangian Mechanics by myself, and it took a lot time.
-# I highly recommend that you use already-created equations of motion for this
 # Reference: https://www.academia.edu/4468049/Controlling_an_Inverted_pendulum_using_state_space_modeling_method_step_by_step_design_guide_for_control_students_
 
 import numpy as np
